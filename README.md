@@ -41,6 +41,7 @@ An automated utility script for performing weekly backups of a specific director
     ```bash
     BACKUP_DIR="/backup"
     TARGET_DIR="/path/to/your/directory"
+    DROPBOX_BACKUP_DIR="/backups/apps/"
     DB_NAME="" # Leave empty to backup all databases or set to a specific database name
     DB_USER="your_database_user"
     DB_PASSWORD="your_database_password"
@@ -63,7 +64,7 @@ An automated utility script for performing weekly backups of a specific director
     Add the following line to schedule the script to run daily at 2 AM:
 
     ```bash
-    0 2 * * * /path/to/backup_script.sh
+    0 2 * * * /path/to/backup_script.sh >> /path/to/backup_script.log 2>&1
     ```
 
 ## Usage
