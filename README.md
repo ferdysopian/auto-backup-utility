@@ -55,10 +55,10 @@ An automated utility script for performing weekly backups of a specific director
     crontab -e
     ```
 
-    Add the following line to schedule the script to run weekly at 2 AM on Sundays:
+    Add the following line to schedule the script to run daily at 2 AM:
 
     ```bash
-    0 2 * * 0 /path/to/backup_script.sh
+    0 2 * * * /path/to/backup_script.sh
     ```
 
 ## Usage
