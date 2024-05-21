@@ -18,14 +18,14 @@ mkdir -p $BACKUP_DIR
 tar -czf $BACKUP_DIR/www-backup-$DATE.tar.gz $TARGET_DIR
 
 # Upload backups to Dropbox
-$DROPBOX_UPLOADER_PATH upload $BACKUP_DIR/www-backup-$DATE.tar.gz /backups/
+$DROPBOX_UPLOADER_PATH upload $BACKUP_DIR/www-backup-$DATE.tar.gz $DROPBOX_BACKUP_DIR
 
 # Function to backup and upload a database
 backup_and_upload_db() {
     local db=$1
     mysqldump -u $DB_USER -p$DB_PASSWORD $db > $BACKUP_DIR/${db}-backup-$DATE.sql
     gzip $BACKUP_DIR/${db}-backup-$DATE.sql
-    $DROPBOX_UPLOADER_PATH upload $BACKUP_DIR/${db}-backup-$DATE.sql.gz /backups/
+    $DROPBOX_UPLOADER_PATH upload $BACKUP_DIR/${db}-backup-$DATE.sql.gz $DROPBOX_BACKUP_DIR
     rm $BACKUP_DIR/${db}-backup-$DATE.sql.gz
 }
 
@@ -43,6 +43,9 @@ fi
 
 # Remove local backup files
 rm $BACKUP_DIR/www-backup-$DATE.tar.gz
+
+# Remove backups older than 7 days in Dropbox
+$DROPBOX_UPLOADER_PATH delete $DROPBOX_BACKUP_DIR* -t 7
 
 echo "Backup and upload completed successfully."
 
