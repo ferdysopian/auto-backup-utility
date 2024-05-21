@@ -15,7 +15,7 @@ DATE=$(date +%F)
 mkdir -p $BACKUP_DIR
 
 # Backup /var/www directory
-tar -czf $BACKUP_DIR/www-backup-$DATE.tar.gz $WWW_DIR
+tar -czf $BACKUP_DIR/www-backup-$DATE.tar.gz $TARGET_DIR
 
 # Upload backups to Dropbox
 $DROPBOX_UPLOADER_PATH upload $BACKUP_DIR/www-backup-$DATE.tar.gz /backups/
