@@ -27,9 +27,14 @@ An automated utility script for performing weekly backups of a specific director
 
 2. Install Dropbox-Uploader:
 
-    Follow the instructions at [Dropbox-Uploader](https://github.com/andreafabrizi/Dropbox-Uploader) to install and configure Dropbox-Uploader.
+    Install and configure Dropbox-Uploader:
 
-3. Create and configure the environment file:
+    ```bash
+    chmod +x /path/to/dropbox_uploader.sh
+    /path/to/dropbox_uploader.sh
+    ```
+
+4. Create and configure the environment file:
 
     Create a file named `backup.conf` and add your configuration:
 
@@ -41,13 +46,13 @@ An automated utility script for performing weekly backups of a specific director
     DB_PASSWORD="your_database_password"
     ```
 
-4. Make the backup script executable:
+5. Make the backup script executable:
 
     ```bash
     chmod +x /path/to/backup_script.sh
     ```
 
-5. Schedule the script to run weekly using cron:
+6. Schedule the script to run weekly using cron:
 
     Edit your cron jobs:
 
